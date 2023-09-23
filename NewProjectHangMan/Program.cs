@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace NewProjectHangman
 {
@@ -24,17 +24,19 @@ namespace NewProjectHangman
 
             // Clear the console and display the welcome message.
             Console.Clear();
-            Console.WriteLine("I have picked a secret word from the list, can you try to guess the word?");
+            Console.WriteLine("Welcome to Hangman!");
+            Console.WriteLine("I have picked a secret word from the list. Can you try to guess the word?");
 
             // Start the game loop.
             while (counter < MAX_GUESS)
             {
                 // Display the current state of the revealed word.
                 string guessedWord = new string(revealedWord);
-                Console.WriteLine($"Can you guess it? {guessedWord}");
-                //Console.WriteLine("Guess a letter: ");
+                Console.WriteLine($"\nCurrent word: {guessedWord}");
+                Console.WriteLine($"Guesses remaining: {MAX_GUESS - counter}");
 
                 // Read the player's guess.
+                Console.Write("Guess a letter: ");
                 char guess = Console.ReadKey().KeyChar;
 
                 // Check if the guess is contained in the secret word.
@@ -55,14 +57,14 @@ namespace NewProjectHangman
                 }
 
                 // Check if the player has won or lost the game.
-                if (guessedWord == secretWord)
+                if (new string(revealedWord) == secretWord)
                 {
-                    Console.WriteLine($"You win! The secret word was {secretWord}.");
+                    Console.WriteLine($"\nYou win! The secret word was '{secretWord}'.");
                     break;
                 }
                 else if (counter == MAX_GUESS)
                 {
-                    Console.WriteLine($"You lose! The secret word was {secretWord}.");
+                    Console.WriteLine($"\nYou lose! The secret word was '{secretWord}'.");
                     break;
                 }
             }
