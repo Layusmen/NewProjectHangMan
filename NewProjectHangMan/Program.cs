@@ -28,12 +28,13 @@ namespace NewProjectHangman
             Console.WriteLine("I have picked a secret word from the list. Can you try to guess the word?");
 
             // Start the game loop.
+            int guessLeft = MAX_GUESS - counter;
             while (counter < MAX_GUESS)
             {
                 // Display the current state of the revealed word.
                 string guessedWord = new string(revealedWord);
                 Console.WriteLine($"\nCurrent word: {guessedWord}");
-                Console.WriteLine($"Guesses remaining: {MAX_GUESS - counter}");
+                Console.WriteLine($"Guesses remaining: {guessLeft}");
 
                 // Read the player's guess.
                 Console.Write("Guess a letter: ");
